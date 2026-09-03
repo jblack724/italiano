@@ -1,7 +1,8 @@
 # Italiano
 
-Class notes and flashcards for a beginner Italian course. Static HTML, no build step.
+Notes and flashcards for Italian 10 (Beginning Italian I). Static HTML, no build step.
 
-- Open `index.html` in a browser, or visit the GitHub Pages site.
-- `notes/` has one page per class session. `flashcards.html` drills the vocabulary.
+- `index.html` is the whole document: contents, then every set of notes, grouped into Lectures, In class, and Textbook. It prints as one document.
+- `flashcards.html` drills the vocabulary, by collection or all at once.
+- Live at https://jblack724.github.io/italiano/.
 - `CLAUDE.md` explains how new notes are added and the style they follow.

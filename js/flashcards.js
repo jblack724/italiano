@@ -10,28 +10,50 @@
   function store(k, v) { try { localStorage.setItem("italiano." + k, v); } catch (e) {} }
   function load(k) { try { return localStorage.getItem("italiano." + k); } catch (e) { return null; } }
 
-  // Session picker: "All sessions" plus every session that has words.
+  // Deck picker: everything, then one group per collection (with an "All …" option), then the example page.
   var withWords = I.sessions.filter(function (s) { return s.words && s.words.length; });
-  sel.innerHTML = '<option value="all">All sessions</option>' + withWords.map(function (s) {
-    return '<option value="' + I.esc(s.id) + '">' + I.esc(s.example ? "Example: " + s.title : I.label(s)) + "</option>";
-  }).join("");
+  var realWithWords = withWords.filter(function (s) { return !s.example; });
+  var groups = I.collections.map(function (c) { return c.id; });
+  realWithWords.forEach(function (s) { var c = I.collectionOf(s); if (groups.indexOf(c) < 0) groups.push(c); });
+
+  var html = '<option value="all">Everything</option>';
+  groups.forEach(function (cid) {
+    var items = realWithWords.filter(function (s) { return I.collectionOf(s) === cid; });
+    if (!items.length) return;
+    var title = I.collectionTitle(cid);
+    html += '<optgroup label="' + I.esc(title) + '">';
+    if (items.length > 1) html += '<option value="all:' + I.esc(cid) + '">All ' + I.esc(title.toLowerCase()) + "</option>";
+    items.forEach(function (s) { html += '<option value="' + I.esc(s.id) + '">' + I.esc(I.label(s)) + "</option>"; });
+    html += "</optgroup>";
+  });
+  withWords.filter(function (s) { return s.example; }).forEach(function (s) {
+    html += '<option value="' + I.esc(s.id) + '">Example: ' + I.esc(s.title) + "</option>";
+  });
+  sel.innerHTML = html;
+
   var wanted = new URLSearchParams(location.search).get("session") || load("session") || "all";
-  if (wanted === "all" || withWords.some(function (s) { return s.id === wanted; })) sel.value = wanted;
+  var valid = Array.prototype.some.call(sel.options, function (o) { return o.value === wanted; });
+  sel.value = valid ? wanted : "all";
 
   var dir = load("dir") === "en" ? "en" : "it";
   document.querySelector('input[name="dir"][value="' + dir + '"]').checked = true;
 
   var words = [], deck = [], total = 0, flipped = false;
 
-  function build() {
-    var id = sel.value;
-    store("session", id);
-    if (id === "all") {
-      words = I.real.reduce(function (acc, s) { return acc.concat(s.words || []); }, []);
-    } else {
-      var s = I.sessions.filter(function (x) { return x.id === id; })[0];
-      words = s && s.words ? s.words.slice() : [];
+  function wordsFor(id) {
+    if (id === "all") return I.real.reduce(function (acc, s) { return acc.concat(s.words || []); }, []);
+    if (id.indexOf("all:") === 0) {
+      var cid = id.slice(4);
+      return I.real.filter(function (s) { return I.collectionOf(s) === cid; })
+        .reduce(function (acc, s) { return acc.concat(s.words || []); }, []);
     }
+    var s = I.sessions.filter(function (x) { return x.id === id; })[0];
+    return s && s.words ? s.words.slice() : [];
+  }
+
+  function build() {
+    store("session", sel.value);
+    words = wordsFor(sel.value);
     deck = words.map(function (_, i) { return i; });
     total = deck.length;
     flipped = false;
@@ -67,7 +89,7 @@
       word.removeAttribute("lang");
       word.classList.remove("unsure");
       word.textContent = total ? "Finished!" : "No cards";
-      detail.innerHTML = total ? "You went through all " + total + " cards. Press Restart to go again." : "Pick a session that has vocabulary.";
+      detail.innerHTML = total ? "You went through all " + total + " cards. Press Restart to go again." : "Pick a deck that has vocabulary.";
       detail.hidden = false;
       progress.textContent = total ? "0 of " + total + " left" : "";
       card.setAttribute("aria-label", "Deck finished");

@@ -68,13 +68,17 @@
     }
   });
 
-  // 2. Mark collections that have no notes yet, so print skips their page break.
+  // 2. Print button. The print stylesheet does the rest.
+  var printBtn = document.getElementById("print");
+  if (printBtn) printBtn.addEventListener("click", function () { window.print(); });
+
+  // 3. Mark collections that have no notes yet, so print skips their page break.
   Array.prototype.forEach.call(document.querySelectorAll(".collection"), function (el) {
     if (!el.querySelector(".note")) el.setAttribute("data-empty", "");
     else el.removeAttribute("data-empty");
   });
 
-  // 3. Nested table of contents, built from h2 (collection), h3 (a set of notes), h4 (a topic).
+  // 4. Nested table of contents, built from h2 (collection), h3 (a set of notes), h4 (a topic).
   //    Every heading needs an id; the pages set them, and anything missing gets one here.
   var toc = document.querySelector("[data-toc]");
   if (toc) {

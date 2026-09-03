@@ -126,6 +126,10 @@ Decide what each part of the source is for, then treat it accordingly.
 
 Justin asked for this directly: the notes should be Italian with its English translation, plus the rules that make the Italian work, and nothing else. When a cut slide contains a real phrase worth knowing (`In piedi!` = "Stand up!"), keep the phrase in the vocabulary and drop the activity around it.
 
+**No meta text.** Nothing on the page talks about the page, the slides, or how to study. Cut sentences about how the document prints or is organized, about what the deck did or did not show, about what you added, and every instruction to the reader (`Memorize the columns`, `Learn these as pairs`, `Pick the one you need`). Say a fact instead of framing it: `The question decides the form of the answer`, not `Learn these as pairs`. Report anything you added or were unsure about in the chat reply, never on the page. The only exception is a functional legend, such as a caption saying what a dash in a table means.
+
+**No stand-in examples.** Decks illustrate with the instructor's own name, cat, hometown, and field, or with figures like Dante and Anna. Those are irrelevant to Justin. Keep an example only when it demonstrates the form or the sound being taught; use `Justin`, `Boston`, or a blank (`______`) when a name or place is needed. Pronunciation example words stay, because the word is the evidence for the sound.
+
 **Add, when it helps memorization:** a pattern the source implies but never states (all these nouns are feminine; regular `-are` verbs end `-o, -i, -a`), a stress or pronunciation hint, an English gloss, a noun's article and gender. These must be things a first-semester learner can verify, never new grammar. Say in the reply what you added, and use a callout when a whole block is yours rather than the source's.
 
 ## Accuracy rules
@@ -225,3 +229,5 @@ Plain `<p>`, `<ul>`, and `<ol>` are fine too. Anything that should not print (a 
 - Edit `_reference/components.html` except to keep it in sync with a component change.
 - Invent content that is not in the source.
 - Include practice activities, homework, or any course administration.
+- Write meta text: notes about the document, the slides, or how to study.
+- Keep examples built on the instructor's life or on stand-in figures from the slides.

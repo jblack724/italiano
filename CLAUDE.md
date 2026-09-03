@@ -2,6 +2,8 @@
 
 Personal study document for Italian 10 (Beginning Italian I, Harvard, fall 2026; textbook *Parliamo italiano!* 5th ed. with the VHL Supersite). The folder is named `spanish` by mistake; the class is Italian. Justin gives the agent source material (lecture slide decks, photos of handwritten notes, textbook pages) and the agent adds a section to the document plus a vocabulary entry that feeds the flashcards.
 
+**These are study notes, not a transcript.** The job is to work out what has to be memorized and build the page around that. A slide deck is a teaching aid: it repeats, illustrates with pictures, and spends slides on admin and activities. The notes should be what you would want in front of you the night before a quiz. See "What to keep, what to cut" below.
+
 **Everything lives on one page.** `index.html` is the whole document: a table of contents, then every set of notes, so it reads top to bottom and prints as one document. There are no per-lecture pages. The only other page is the flashcards app.
 
 Plain static HTML, CSS, and JavaScript. No build step, no dependencies, no frameworks. It opens straight from the file system and is published with GitHub Pages at https://jblack724.github.io/italiano/ (repo `jblack724/italiano`).
@@ -90,11 +92,10 @@ Empty collections say "Nothing here yet" and are skipped by the print page break
 2. Render the deck so you can see the pictures: `soffice --headless --convert-to pdf --outdir <scratchpad> <copy of the pptx>` (LibreOffice is at `/opt/homebrew/bin/soffice`). Then Read the PDF in batches of at most 20 pages. Much of the content is in images (pronunciation examples, colored highlights, photos that explain a word).
 3. The `h3` is `Lecture N · ` plus the deck's own Italian title. The number comes from the file name (`1_09.02 …` is lecture 1); also put it in the entry's `lecture` field. The meta line is `MM/DD/YY · Week N · English subtitle`.
 4. Administrative slides (contacts, class contract, syllabus, honesty policy, tips) collapse into one short "Course logistics" topic at the top. Skip nothing that says how the course works.
-5. **Headings come from the slides, not from you.** Each `h4` reuses the wording of the slide or the agenda item it covers (`Pronunciamo l'italiano!`, `Compiti per domani`, `Che cosa studi? (studiare)`), with a short English gloss in parentheses when the Italian alone is not clear. Put the deck's agenda slide first as `Ordine del giorno`. Each language topic gets its own `h4`, with the slide's example sentences as an examples list and any conjugation as a conj table. If the deck only showed some forms of a verb, table only those and say so in the caption.
-6. Activity slides (interview a partner, present a classmate, brainstorm) are recorded as the prompt and the sentence frames, briefly, under an `h5`.
-7. Pronunciation slides become a table: spelling, sound, examples. Tongue twisters are an examples list with an English gloss and the sound they practice.
-8. The homework slide is always its own `h4` at the end, before Vocabulary.
-9. Vocabulary: every word or phrase the deck teaches, including the words used as pronunciation examples (with a `note` naming the sound) and the "parole utili" lists. Nouns get their article and gender.
+5. **Headings name what is being learned, in the slides' words where they fit.** Use the deck's own Italian (`Compiti per domani`, `Pronuncia`, `Che cosa studi?`) with a short English gloss in parentheses. A heading may cover several slides. Say in the heading itself when a section is not memorization work (`In classe (practice, nothing to memorize)`).
+6. Group the whole deck into a handful of `h4` sections in study order, following "What to keep, what to cut" above. Order them: the phrases and forms first, then supporting vocabulary, then rules, then practice, then course admin, then homework, then Vocabolario last.
+7. The homework slide is always its own `h4`, second to last.
+8. Vocabulary: every word or phrase the deck teaches, in rough priority order, with the core phrases first. Include words used as pronunciation examples, tagged with a `note` naming the sound. Nouns get their article and gender.
 
 ### Handwritten notes
 
@@ -104,10 +105,32 @@ Photos come pasted in the chat. Transcribe faithfully. Unclear handwriting: best
 
 Pages or photos of the unit. Slug is the unit (`unita-p`, `unita-1a`). Same rules as handwritten notes, but the source is printed, so nothing should need a `[?]`.
 
-## Transcription rules
+## What to keep, what to cut
 
-- **Faithful, not creative.** Write what is in the source. Do not add grammar the source does not cover and do not pad the vocabulary. A short section that matches the source beats a long one that does not.
-- **Small additions are allowed only when they explain the source itself**, such as an English gloss for an Italian sentence, a sound description for a pronunciation slide, or the article and gender of a noun. Say in the reply what you added. Anything bigger goes in a callout that says it is not from the source.
+Decide what each part of the source is for, then treat it accordingly.
+
+**Lead with the thing being taught.** Open the section with a sentence saying what the lesson actually is, then put the highest-value material first. Lecture 1 is four questions plus the hard/soft pronunciation rule; everything else is support. Slide order is not study order, so reorganize freely.
+
+**Keep and make prominent:**
+
+- Phrases and sentence frames to be used verbatim (`Come ti chiami?` → `Mi chiamo…`). Pair the question with its answer in one table; that pairing is the thing being memorized.
+- Verb forms. Put every verb covered in one table with the persons as rows, so the columns can be memorized together. Mark which are regular and which must be brute-forced.
+- Rules and patterns, stated as a rule. If the slides show `ca co cu` on one side and `cia cio ciu` on the other, the memorizable fact is "hard before a/o/u, soft before e/i, and h or i switches it" — write that out, then show the examples.
+- Anything closed-set and ordered, like the `benissimo…male` scale.
+- Traps: irregular forms, silent letters, stress that falls where an English speaker would not put it, and accents that change meaning (`è` vs `e`).
+
+**Compress:** activity slides, brainstorm prompts, and lists of cognates. Record what the activity was in a line or two, under a heading that says it is practice. Tongue twisters are pronunciation drills, so list them with the sound each one trains and say they are not to be memorized.
+
+**Compress hard:** administrative slides. Keep only what changes what Justin does, phrased as rules: the honesty policy, the flipped-classroom expectation, the instructor's hours. Cut restatements of the syllabus.
+
+**Cut:** slide titles that carry no content, decorative photos, and repeated illustrations of a point already made. If the deck spends five slides drilling one form with different pictures, that is one table plus one example.
+
+**Add, when it helps memorization:** a pattern the source implies but never states (all these nouns are feminine; regular `-are` verbs end `-o, -i, -a`), a stress or pronunciation hint, an English gloss, a noun's article and gender. These must be things a first-semester learner can verify, never new grammar. Say in the reply what you added, and use a callout when a whole block is yours rather than the source's.
+
+## Accuracy rules
+
+- **Never invent Italian.** Do not add vocabulary, forms, or grammar the source does not cover. If a verb's `noi`/`voi`/`loro` forms were not shown, leave them out and mark the gap (a dash in the table, a note in the caption).
+- **Reorganizing is not inventing.** Merging four slides into one table, or moving logistics to the end, is the job. Changing what the Italian says is not.
 - **Fix spelling and accents silently.** Handwriting often drops accents (`perche` → `perché`, `e` → `è` when it means "is"). Standard Italian spelling is transcription, not a content change. Typos in slides (a wrong email domain, "Ital 15" for "Ital 10") are fixed the same way.
 - **Unclear source: best guess, flagged.** In HTML wrap the guess in `<span class="unsure" title="Unclear in the source; please check">…</span>`. In data set `unsure: true` on the word. Both render a `[?]`.
 - **Looks wrong? Keep it and flag it.** If the source says something that seems incorrect, keep the source's version and add a `check` callout right after it saying what you think is right. Never silently correct content.

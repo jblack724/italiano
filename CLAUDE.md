@@ -108,7 +108,7 @@ Screenshots of the unit, usually in `~/Documents` named `Screenshot <date> at <t
 - **Lettered sections (A, B, C, D) give the structure.** Their titles (`Le presentazioni`, `I saluti`, `L'alfabeto`, `I numeri da 0 a 100`) become `h4` headings, split further when one section covers two things.
 - **`ATTIVITÀ` blocks (P.1, P.2, …) are activities. Skip all of them,** including their `Esempio` dialogues and any name or city lists they hand you to practice with.
 - **The `Informale` / `Formale` model dialogues are activities in disguise.** They exist to show the register difference. Take the contrast, drop the fictional speakers, and build one informal-versus-formal table instead.
-- **`Lo sapevi che…?` boxes are mixed.** Keep the ones that state a usage rule (when to use `Lei` and `tu`; how titles behave before a name). Cut the culture trivia (greeting customs, word etymologies, where Italian is spoken, borrowed words, acronyms).
+- **`Lo sapevi che…?` boxes.** Usage rules (when to use `Lei` and `tu`, how titles behave before a name) belong with the grammar they govern. The rest goes in one `Note culturali` heading near the end of the unit, written as compact facts in your own words, never as the book's prose.
 - **The numbered rules under a section** (how numbers are spelled) are exactly what to keep; put them in a callout.
 - **The unit's closing `VOCABOLARIO` page** is the authoritative word list. Build the `words` array from it, adding anything taught in the body that it leaves out.
 - Alphabet letter names go in a table only, not the vocabulary. A card reading "bi" on one side is not a translation. Numbers do go in the vocabulary, with the digits as the English side.
@@ -143,7 +143,9 @@ Justin asked for this directly: the notes should be Italian with its English tra
 
 ## Accuracy rules
 
-- **Never invent Italian.** Do not add vocabulary, forms, or grammar the source does not cover. If a verb's `noi`/`voi`/`loro` forms were not shown, leave them out and mark the gap (a dash in the table, a note in the caption).
+- **Never reproduce the source verbatim at length.** The textbook is a copyrighted commercial book and the site is public. Short phrase-and-translation pairs, conjugations, number and letter lists are the functional content of a language and belong in the notes. Prose, exercises, model dialogues, and culture boxes get rewritten as facts and tables, never transcribed. Justin asked for a raw-text section on 2026-09-03; that was declined and the culture content was added in rewritten form instead.
+
+**Never invent Italian.** Do not add vocabulary, forms, or grammar the source does not cover. If a verb's `noi`/`voi`/`loro` forms were not shown, leave them out and mark the gap (a dash in the table, a note in the caption).
 - **Reorganizing is not inventing.** Merging four slides into one table, or moving logistics to the end, is the job. Changing what the Italian says is not.
 - **Fix spelling and accents silently.** Handwriting often drops accents (`perche` → `perché`, `e` → `è` when it means "is"). Standard Italian spelling is transcription, not a content change. Typos in slides (a wrong email domain, "Ital 15" for "Ital 10") are fixed the same way.
 - **Unclear source: best guess, flagged.** In HTML wrap the guess in `<span class="unsure" title="Unclear in the source; please check">…</span>`. In data set `unsure: true` on the word. Both render a `[?]`.

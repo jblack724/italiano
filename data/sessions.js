@@ -11,6 +11,7 @@ window.COLLECTIONS = [
 // Session fields:
 //   id      "lectures/2026-09-02"  collection + slug; must match the file path <id>.html.
 //                                  Slug is the class date for lectures and in-class notes, the unit for textbook notes ("textbook/unita-p").
+//   lecture number        which lecture in its collection, when the source is numbered (decks are: "1_09.02 …")
 //   week    number        week of the course (Week 1 starts Sep 2, 2026)
 //   date    "YYYY-MM-DD"  date of the class or, for textbook notes, the date you studied it
 //   title   string        short title, as on the page h1 (lectures keep the deck's Italian title)
@@ -60,6 +61,7 @@ window.SESSIONS = [
 
   {
     id: "lectures/2026-09-02",
+    lecture: 1,
     week: 1,
     date: "2026-09-02",
     title: "Presentazioni e pronuncia",

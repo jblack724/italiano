@@ -14,9 +14,10 @@
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
     });
   }
+  // Dates read as 09/02/26, the way the lecture decks are named.
   function fmtDate(iso) {
-    var d = new Date(iso + "T12:00:00");
-    return isNaN(d) ? iso : d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+    return m ? m[2] + "/" + m[3] + "/" + m[1].slice(2) : iso;
   }
   function collectionOf(s) { return s.id.indexOf("/") > -1 ? s.id.split("/")[0] : ""; }
   function collectionTitle(cid) {
@@ -24,7 +25,8 @@
     return c ? c.title : cid;
   }
   function label(s) {
-    return (s.week != null ? "Week " + s.week + " · " : "") + fmtDate(s.date) + " · " + s.title;
+    return [s.lecture != null ? "Lecture " + s.lecture : null, fmtDate(s.date), s.title]
+      .filter(Boolean).join(" · ");
   }
 
   window.Italiano = {

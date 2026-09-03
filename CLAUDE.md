@@ -25,8 +25,8 @@ h1  Italiano                      the document
   section.collection              one per collection
     h2  Lectures                  the collection
       section.note                one set of notes
-        h3  Presentazioni e …     its title
-        p.meta                    Lecture 1 · Week 1 · Wednesday, September 2, 2026 · English subtitle
+        h3  Lecture 1 · Present…   "Lecture N · " plus the source's own title
+        p.meta                    09/02/26 · Week 1 · English subtitle
         h4  Come stai? (stare)    a topic
           h5                      a part of a topic, when needed
         h4  Vocabulary            always last
@@ -68,8 +68,8 @@ Empty collections say "Nothing here yet" and are skipped by the print page break
 
 ```html
 <section class="note" aria-labelledby="lectures-2026-09-02">
-  <h3 id="lectures-2026-09-02">Presentazioni e pronuncia</h3>
-  <p class="meta">Lecture 1 · Week 1 · Wednesday, September 2, 2026 · Introductions and pronunciation</p>
+  <h3 id="lectures-2026-09-02">Lecture 1 · Presentazioni e pronuncia</h3>
+  <p class="meta">09/02/26 · Week 1 · Introductions and pronunciation</p>
 
   <h4 id="lectures-2026-09-02-stai">Come stai? (stare)</h4>
   <!-- body: paragraphs, examples lists, tables, callouts -->
@@ -88,9 +88,9 @@ Empty collections say "Nothing here yet" and are skipped by the print page break
 
 1. Extract the text with python-pptx (installed): iterate slides and shapes, include tables and speaker notes, keep slide order. Save to the scratchpad.
 2. Render the deck so you can see the pictures: `soffice --headless --convert-to pdf --outdir <scratchpad> <copy of the pptx>` (LibreOffice is at `/opt/homebrew/bin/soffice`). Then Read the PDF in batches of at most 20 pages. Much of the content is in images (pronunciation examples, colored highlights, photos that explain a word).
-3. Keep the deck's Italian title as the `h3`; put the English in the meta line.
+3. The `h3` is `Lecture N · ` plus the deck's own Italian title. The number comes from the file name (`1_09.02 …` is lecture 1); also put it in the entry's `lecture` field. The meta line is `MM/DD/YY · Week N · English subtitle`.
 4. Administrative slides (contacts, class contract, syllabus, honesty policy, tips) collapse into one short "Course logistics" topic at the top. Skip nothing that says how the course works.
-5. Each language topic gets its own `h4`, with the slide's example sentences as an examples list and any conjugation as a conj table. If the deck only showed some forms of a verb, table only those and say so in the caption.
+5. **Headings come from the slides, not from you.** Each `h4` reuses the wording of the slide or the agenda item it covers (`Pronunciamo l'italiano!`, `Compiti per domani`, `Che cosa studi? (studiare)`), with a short English gloss in parentheses when the Italian alone is not clear. Put the deck's agenda slide first as `Ordine del giorno`. Each language topic gets its own `h4`, with the slide's example sentences as an examples list and any conjugation as a conj table. If the deck only showed some forms of a verb, table only those and say so in the caption.
 6. Activity slides (interview a partner, present a classmate, brainstorm) are recorded as the prompt and the sentence frames, briefly, under an `h5`.
 7. Pronunciation slides become a table: spelling, sound, examples. Tongue twisters are an examples list with an English gloss and the sound they practice.
 8. The homework slide is always its own `h4` at the end, before Vocabulary.

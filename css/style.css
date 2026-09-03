@@ -48,15 +48,16 @@ body {
 .print-btn {
   font: inherit;
   font-size: .9rem;
-  padding: .3rem .7rem;
-  min-height: 34px;
-  border: 1px solid var(--border);
+  font-weight: 600;
+  padding: .35rem .85rem;
+  min-height: 36px;
+  border: 1px solid var(--accent);
   border-radius: 999px;
-  background: #fff;
-  color: var(--accent);
+  background: var(--accent);
+  color: #fff;
   cursor: pointer;
 }
-.print-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
+.print-btn:hover { background: #085a31; border-color: #085a31; }
 
 main { max-width: var(--measure); margin: 0 auto; padding: 1rem 1rem 4rem; }
 

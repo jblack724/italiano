@@ -92,10 +92,9 @@ Empty collections say "Nothing here yet" and are skipped by the print page break
 2. Render the deck so you can see the pictures: `soffice --headless --convert-to pdf --outdir <scratchpad> <copy of the pptx>` (LibreOffice is at `/opt/homebrew/bin/soffice`). Then Read the PDF in batches of at most 20 pages. Much of the content is in images (pronunciation examples, colored highlights, photos that explain a word).
 3. The `h3` is `Lecture N · ` plus the deck's own Italian title. The number comes from the file name (`1_09.02 …` is lecture 1); also put it in the entry's `lecture` field. The meta line is `MM/DD/YY · Week N · English subtitle`.
 4. Administrative slides (contacts, class contract, syllabus, honesty policy, tips) collapse into one short "Course logistics" topic at the top. Skip nothing that says how the course works.
-5. **Headings name what is being learned, in the slides' words where they fit.** Use the deck's own Italian (`Compiti per domani`, `Pronuncia`, `Che cosa studi?`) with a short English gloss in parentheses. A heading may cover several slides. Say in the heading itself when a section is not memorization work (`In classe (practice, nothing to memorize)`).
-6. Group the whole deck into a handful of `h4` sections in study order, following "What to keep, what to cut" above. Order them: the phrases and forms first, then supporting vocabulary, then rules, then practice, then course admin, then homework, then Vocabolario last.
-7. The homework slide is always its own `h4`, second to last.
-8. Vocabulary: every word or phrase the deck teaches, in rough priority order, with the core phrases first. Include words used as pronunciation examples, tagged with a `note` naming the sound. Nouns get their article and gender.
+5. **Headings name what is being learned, in the slides' words where they fit.** Use the deck's own Italian (`Pronuncia`, `Che cosa studi?`, `Le quattro domande`) with a short English gloss in parentheses. A heading may cover several slides.
+6. Group what survives into a handful of `h4` sections in study order, following "What to keep, what to cut" above: the phrases and forms first, then supporting vocabulary, then rules, then Vocabolario last.
+7. Vocabulary: every word or phrase the deck teaches, in rough priority order, with the core phrases first. Include words used as pronunciation examples, tagged with a `note` naming the sound. Nouns get their article and gender.
 
 ### Handwritten notes
 
@@ -119,11 +118,13 @@ Decide what each part of the source is for, then treat it accordingly.
 - Anything closed-set and ordered, like the `benissimo…male` scale.
 - Traps: irregular forms, silent letters, stress that falls where an English speaker would not put it, and accents that change meaning (`è` vs `e`).
 
-**Compress:** activity slides, brainstorm prompts, and lists of cognates. Record what the activity was in a line or two, under a heading that says it is practice. Tongue twisters are pronunciation drills, so list them with the sound each one trains and say they are not to be memorized.
+**Cut entirely, do not compress:**
 
-**Compress hard:** administrative slides. Keep only what changes what Justin does, phrased as rules: the honesty policy, the flipped-classroom expectation, the instructor's hours. Cut restatements of the syllabus.
+- **Practice and activity slides.** Interview a partner, present a classmate, brainstorm, stand-up prompts, tongue twisters, lists of cognates he already knows. If a slide tells the class to *do* something rather than teaching something, it does not go in.
+- **Everything administrative.** Contacts, office hours, class contract, syllabus walkthroughs, grading, the honesty policy, study tips, and the homework slide. None of it belongs in the notes.
+- Slide titles that carry no content, decorative photos, and repeated illustrations of a point already made. If the deck spends five slides drilling one form with different pictures, that is one table plus one example.
 
-**Cut:** slide titles that carry no content, decorative photos, and repeated illustrations of a point already made. If the deck spends five slides drilling one form with different pictures, that is one table plus one example.
+Justin asked for this directly: the notes should be Italian with its English translation, plus the rules that make the Italian work, and nothing else. When a cut slide contains a real phrase worth knowing (`In piedi!` = "Stand up!"), keep the phrase in the vocabulary and drop the activity around it.
 
 **Add, when it helps memorization:** a pattern the source implies but never states (all these nouns are feminine; regular `-are` verbs end `-o, -i, -a`), a stress or pronunciation hint, an English gloss, a noun's article and gender. These must be things a first-semester learner can verify, never new grammar. Say in the reply what you added, and use a callout when a whole block is yours rather than the source's.
 
@@ -223,3 +224,4 @@ Plain `<p>`, `<ul>`, and `<ol>` are fine too. Anything that should not print (a 
 - Reuse a heading id.
 - Edit `_reference/components.html` except to keep it in sync with a component change.
 - Invent content that is not in the source.
+- Include practice activities, homework, or any course administration.

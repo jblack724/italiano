@@ -89,7 +89,7 @@ window.SESSIONS = [
       { it: "male", en: "badly", say: "MAH-leh" },
       { it: "oggi", en: "today", say: "OHD-jee" },
       { it: "In piedi!", en: "Stand up! (classroom instruction)" },
-      { it: "un compagno / una compagna", en: "a classmate (m / f)", example: "Intervistiamo un compagno/a.", exampleEn: "Let's interview a classmate." },
+      { it: "un compagno / una compagna", en: "a classmate (m / f)" },
       { it: "il professore", en: "professor (male)", gender: "m", plural: "i professori" },
       { it: "la biologia", en: "biology", gender: "f" },
       { it: "l'economia", en: "economics", gender: "f" },

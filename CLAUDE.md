@@ -14,7 +14,7 @@ Plain static HTML, CSS, and JavaScript. No build step, no dependencies, no frame
 |---|---|
 | `index.html` | The document. Contents, then one collection section per collection, each holding its notes. |
 | `data/sessions.js` | The collections, plus every set of notes and its vocabulary. Field docs are at the top of the file. |
-| `flashcards.html`, `js/flashcards.js` | Flashcard app. Deck picker (everything, a whole collection, or one set of notes), Italian-first or English-first, shuffle, Again / Got it. |
+| `flashcards.html`, `js/flashcards.js`, `css/flashcards.css` | Study app. Deck picker by set and by section, Italian-first or English-first, starred filter, and three modes: Cards (flip, still learning / know, spoken Italian), Write (typed answers, lenient on case, accents, and articles), Match (timed six-pair game). Its stylesheet is separate so the document's stays about the document. |
 | `js/site.js` | Renders the vocabulary tables, flags empty collections, builds the table of contents. |
 | `css/style.css` | All styling, including the print rules. |
 | `_reference/components.html` | Style reference. Shows every component in a fake set of notes. Not part of the document. Keep it in sync if a component changes. |
@@ -95,6 +95,7 @@ Empty collections say "Nothing here yet" and are skipped by the print page break
 5. **Headings name what is being learned, in the slides' words where they fit.** Use the deck's own Italian (`Pronuncia`, `Che cosa studi?`, `Le quattro domande`) with a short English gloss in parentheses. A heading may cover several slides.
 6. Group what survives into a handful of `h4` sections in study order, following "What to keep, what to cut" above: the phrases and forms first, then supporting vocabulary, then rules, then Vocabolario last.
 7. Vocabulary: every word or phrase the deck teaches, in rough priority order, with the core phrases first. Include words used as pronunciation examples, tagged with a `note` naming the sound. Nouns get their article and gender.
+8. **Every word needs a `group`.** It is the section shown in the flashcard picker, so keep them coarse (six or seven per set) and name them in the source's own words: `Saluti`, `Congedi`, `I numeri`, `Pronuncia`. Words in a set stay grouped together and in order.
 
 ### Handwritten notes
 

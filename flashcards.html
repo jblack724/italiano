@@ -5,40 +5,154 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Flashcards · Italiano</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/flashcards.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><div class="inner">
   <a class="brand" href="index.html">Italiano</a>
-  <nav aria-label="Site"><a href="index.html">Notes</a><a href="flashcards.html" aria-current="page">Flashcards</a></nav>
+  <nav aria-label="Site">
+    <a href="index.html">Notes</a>
+    <a href="flashcards.html" aria-current="page">Flashcards</a>
+  </nav>
 </div></header>
+
 <main id="main">
   <h1>Flashcards</h1>
-  <form class="controls" onsubmit="return false">
-    <label for="session">Deck <select id="session"></select></label>
+
+  <form class="picker" onsubmit="return false">
+    <label for="set">Set
+      <select id="set"></select>
+    </label>
+    <label for="group">Section
+      <select id="group"></select>
+    </label>
     <fieldset>
       <legend>Show first</legend>
-      <label><input type="radio" name="dir" value="it" checked> Italian</label>
-      <label><input type="radio" name="dir" value="en"> English</label>
+      <span class="seg">
+        <label><input type="radio" name="dir" value="it" checked><span>Italian</span></label>
+        <label><input type="radio" name="dir" value="en"><span>English</span></label>
+      </span>
     </fieldset>
-    <span class="btns">
+    <label class="inline" for="starred">
+      <input type="checkbox" id="starred"> Starred only
+    </label>
+  </form>
+
+  <div class="modes" role="tablist" aria-label="Study mode">
+    <button type="button" role="tab" id="tab-cards" aria-controls="panel-cards" aria-selected="true" data-mode="cards">Cards</button>
+    <button type="button" role="tab" id="tab-write" aria-controls="panel-write" aria-selected="false" data-mode="write">Write</button>
+    <button type="button" role="tab" id="tab-match" aria-controls="panel-match" aria-selected="false" data-mode="match">Match</button>
+  </div>
+
+  <p class="empty-deck" id="empty" hidden>This section has no cards. Pick another set or section.</p>
+
+  <!-- Cards -->
+  <section class="panel" id="panel-cards" role="tabpanel" aria-labelledby="tab-cards">
+    <div class="bar"><span id="bar-fill"></span></div>
+    <p class="counts">
+      <span class="pill learning"><b id="n-learning">0</b> still learning</span>
+      <span class="pill known"><b id="n-known">0</b> know</span>
+      <span class="pill left" id="n-left"></span>
+    </p>
+
+    <div class="stage">
+      <button type="button" class="card" id="card" aria-describedby="card-hint">
+        <span class="card-inner">
+          <span class="face front">
+            <span class="side-label" id="front-label"></span>
+            <span class="term" id="front-term"></span>
+          </span>
+          <span class="face back">
+            <span class="side-label" id="back-label"></span>
+            <span class="term" id="back-term"></span>
+            <span class="detail" id="back-detail"></span>
+          </span>
+        </span>
+      </button>
+      <button type="button" class="star-btn" id="star" aria-pressed="false" aria-label="Star this card"><span class="glyph">★</span></button>
+    </div>
+    <p class="sr-only" aria-live="polite" id="card-live"></p>
+
+    <div class="actions">
+      <button type="button" class="learning" id="again">Still learning</button>
+      <button type="button" class="primary" id="flip">Flip</button>
+      <button type="button" class="known" id="know">Know</button>
+    </div>
+    <div class="toolbar">
+      <button type="button" id="prev">← Back</button>
+      <button type="button" id="speak">Listen</button>
       <button type="button" id="shuffle">Shuffle</button>
       <button type="button" id="restart">Restart</button>
-    </span>
-  </form>
-  <p class="progress" id="progress" aria-live="polite"></p>
-  <div class="card" id="card" tabindex="0" role="button" aria-live="polite">
-    <div class="side" id="side"></div>
-    <div class="word" id="word"></div>
-    <div class="detail" id="detail" hidden></div>
-  </div>
-  <div class="actions">
-    <button type="button" id="again">Again</button>
-    <button type="button" id="flip" class="primary">Flip</button>
-    <button type="button" id="gotit">Got it</button>
-  </div>
-  <p class="hint">Tap the card or press Space to flip. Left arrow = Again, right arrow = Got it. "Again" sends the card to the back of the deck.</p>
+    </div>
+    <p class="hint" id="card-hint">Space flips. Left arrow marks it still learning, right arrow marks it known. S stars, L listens.</p>
+
+    <div class="done" id="round-done" hidden>
+      <h2 id="done-title">Round finished</h2>
+      <p id="done-text"></p>
+      <div class="actions">
+        <button type="button" class="primary" id="next-round">Study the ones you missed</button>
+        <button type="button" id="restart-all">Start over</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Write -->
+  <section class="panel" id="panel-write" role="tabpanel" aria-labelledby="tab-write" hidden>
+    <div class="bar"><span id="w-bar-fill"></span></div>
+    <p class="counts">
+      <span class="pill known"><b id="w-right">0</b> correct</span>
+      <span class="pill learning"><b id="w-wrong">0</b> to review</span>
+      <span class="pill left" id="w-left"></span>
+    </p>
+    <div class="prompt" id="w-prompt">
+      <span class="side-label" id="w-label"></span>
+      <span class="term" id="w-term"></span>
+    </div>
+    <div class="answer-row">
+      <label class="sr-only" for="w-input">Your answer</label>
+      <input type="text" id="w-input" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Type the answer">
+      <button type="button" class="primary" id="w-submit">Check</button>
+    </div>
+    <p class="verdict" id="w-verdict" aria-live="polite"></p>
+    <div class="toolbar">
+      <button type="button" id="w-skip">Don't know</button>
+      <button type="button" id="w-restart">Restart</button>
+    </div>
+    <p class="hint">Enter checks your answer, then Enter again moves on. Accents and articles are optional.</p>
+
+    <div class="done" id="w-done" hidden>
+      <h2>Finished</h2>
+      <p id="w-done-text"></p>
+      <div class="actions">
+        <button type="button" class="primary" id="w-again">Go again</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Match -->
+  <section class="panel" id="panel-match" role="tabpanel" aria-labelledby="tab-match" hidden>
+    <div class="match-head">
+      <p class="timer" id="m-timer">0.0s</p>
+      <p class="hint" id="m-best"></p>
+    </div>
+    <div class="grid" id="m-grid"></div>
+    <p class="sr-only" aria-live="polite" id="m-live"></p>
+    <div class="toolbar" style="margin-top:1rem">
+      <button type="button" id="m-restart">New game</button>
+    </div>
+    <p class="hint">Tap an Italian tile, then its English match. Six pairs per game.</p>
+
+    <div class="done" id="m-done" hidden>
+      <h2>Matched!</h2>
+      <p id="m-done-text"></p>
+      <div class="actions">
+        <button type="button" class="primary" id="m-again">Play again</button>
+      </div>
+    </div>
+  </section>
 </main>
+
 <script src="data/sessions.js"></script>
 <script src="js/site.js"></script>
 <script src="js/flashcards.js"></script>

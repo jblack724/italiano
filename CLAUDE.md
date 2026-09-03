@@ -102,7 +102,16 @@ Photos come pasted in the chat. Transcribe faithfully. Unclear handwriting: best
 
 ### Textbook
 
-Pages or photos of the unit. Slug is the unit (`unita-p`, `unita-1a`). Same rules as handwritten notes, but the source is printed, so nothing should need a `[?]`.
+Screenshots of the unit, usually in `~/Documents` named `Screenshot <date> at <time>.png`. Take the most recent batch, sort by time, and read them in order; each is a two-page spread. Slug is the unit (`unita-p`, `unita-1a`). Nothing should need a `[?]`, since the source is printed. What the parts of *Parliamo italiano!* are worth:
+
+- **`Si dice così` boxes are the notes.** They are the unit's phrase lists with English on the right. Reproduce them as tables, grouped by function.
+- **Lettered sections (A, B, C, D) give the structure.** Their titles (`Le presentazioni`, `I saluti`, `L'alfabeto`, `I numeri da 0 a 100`) become `h4` headings, split further when one section covers two things.
+- **`ATTIVITÀ` blocks (P.1, P.2, …) are activities. Skip all of them,** including their `Esempio` dialogues and any name or city lists they hand you to practice with.
+- **The `Informale` / `Formale` model dialogues are activities in disguise.** They exist to show the register difference. Take the contrast, drop the fictional speakers, and build one informal-versus-formal table instead.
+- **`Lo sapevi che…?` boxes are mixed.** Keep the ones that state a usage rule (when to use `Lei` and `tu`; how titles behave before a name). Cut the culture trivia (greeting customs, word etymologies, where Italian is spoken, borrowed words, acronyms).
+- **The numbered rules under a section** (how numbers are spelled) are exactly what to keep; put them in a callout.
+- **The unit's closing `VOCABOLARIO` page** is the authoritative word list. Build the `words` array from it, adding anything taught in the body that it leaves out.
+- Alphabet letter names go in a table only, not the vocabulary. A card reading "bi" on one side is not a translation. Numbers do go in the vocabulary, with the digits as the English side.
 
 ## What to keep, what to cut
 
